@@ -32,8 +32,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         ? 1
         : VERIFICATION_BLOCK_CONFIRMATIONS
 
-    log("----------------------------------------------------")
-    const arguments = [
+    log("___________________________________________________________")
+    const args = [
         vrfCoordinatorV2Address,
         subscriptionId,
         networkConfig[chainId]["gasLane"],
@@ -43,7 +43,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     ]
     const raffle = await deploy("Raffle", {
         from: deployer,
-        args: arguments,
+        args: args,
         log: true,
         waitConfirmations: waitBlockConfirmations,
     })
@@ -51,13 +51,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     // Verify the deployment
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying...")
-        await verify(raffle.address, arguments)
+        await verify(raffle.address, args)
     }
 
     log("Run Price Feed contract with command:")
     const networkName = network.name == "hardhat" ? "localhost" : network.name
     log(`yarn hardhat run scripts/enterRaffle.js --network ${networkName}`)
-    log("----------------------------------------------------")
+    log("___________________________________________________________")
 }
 
 module.exports.tags = ["all", "raffle"]
