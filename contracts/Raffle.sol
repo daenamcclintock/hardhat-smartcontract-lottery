@@ -1,28 +1,31 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.7; // use solidity version 0.8.7 or newer
 
-import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
-import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
-import "hardhat/console.sol";
+// Imports
+import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol"; // importing chainlink interface VRFCoordinatorV2Interface
+import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol"; // importing VRFConsumerBaseV2 from chainlink
+import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol"; // importing chainlink interface KeeperCompatibleInterface
+import "hardhat/console.sol"; // importing console from hardhat
 
-error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState);
-error Raffle__TransferFailed();
-error Raffle__SendMoreToEnterRaffle();
-error Raffle__RaffleNotOpen();
+// Custom Errors
+error Raffle__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 raffleState); // Error that throws when there is no upkeep needed ** pass currentBalance (in case it is 0), numPlyers (in case there are no players), and raffleState (in case it is closed) **
+error Raffle__TransferFailed(); // Error that throws when the payable transfer fails to send to raffle winner
+error Raffle__SendMoreToEnterRaffle(); // Error that throws if an insufficient amount is sent to enter the raffle
+error Raffle__RaffleNotOpen(); // Error that throws if the raffle is not currently open
 
-/**@title A sample Raffle Contract
- * @author Patrick Collins
- * @notice This contract is for creating a sample raffle contract
- * @dev This implements the Chainlink VRF Version 2
+/**@title Raffle Contract
+ * @author Daena McClintock
+ * @notice This contract is for creating an untamperable, decentralized smart contract
+ * @dev This implements the Chainlink VRF Version 2 and Chainlink Keepers
  */
-contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
+contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface { // Raffle contract inherits VRFConsumerBaseV2, KeeperCompatibleInterface
     /* Type declarations */
-    enum RaffleState {
+    enum RaffleState { // creating variables with custom types and finite values (uint265 where 0 = OPEN, 1 = CALCULATING)
         OPEN,
         CALCULATING
     }
+
     /* State variables */
     // Chainlink VRF Variables
     VRFCoordinatorV2Interface private immutable i_vrfCoordinator;
@@ -34,7 +37,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
 
     // Lottery Variables
     uint256 private immutable i_interval;
-    uint256 private s_lastTimeStamp;
+    uint256 private s_lastTimeStamp; // State variable that keeps track of the last timestamp on the blockchain
     address private s_recentWinner;
     uint256 private i_entranceFee;
     address payable[] private s_players;
@@ -53,7 +56,8 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         uint256 interval,
         uint256 entranceFee,
         uint32 callbackGasLimit
-    ) VRFConsumerBaseV2(vrfCoordinatorV2) {
+    ) 
+    VRFConsumerBaseV2(vrfCoordinatorV2) {
         i_vrfCoordinator = VRFCoordinatorV2Interface(vrfCoordinatorV2);
         i_gasLane = gasLane;
         i_interval = interval;
@@ -64,14 +68,15 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         i_callbackGasLimit = callbackGasLimit;
     }
 
+    // Function for user to enter the raffle
     function enterRaffle() public payable {
         // require(msg.value >= i_entranceFee, "Not enough value sent");
         // require(s_raffleState == RaffleState.OPEN, "Raffle is not open");
-        if (msg.value < i_entranceFee) {
-            revert Raffle__SendMoreToEnterRaffle();
+        if (msg.value < i_entranceFee) { // if user does not pay the full raffle fee,
+            revert Raffle__SendMoreToEnterRaffle(); // send custom error to send more crypto
         }
-        if (s_raffleState != RaffleState.OPEN) {
-            revert Raffle__RaffleNotOpen();
+        if (s_raffleState != RaffleState.OPEN) { // if the boolean raffle state is not equal to open,
+            revert Raffle__RaffleNotOpen(); // send custom error that raffle is not open
         }
         s_players.push(payable(msg.sender));
         // Emit an event when we update a dynamic array or mapping
