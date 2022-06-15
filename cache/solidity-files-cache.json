@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/contracts/Raffle.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/contracts/Raffle.sol": {
       "lastModificationDate": 1655150766004,
       "contentHash": "68371dea5d8ed6c2a40ad903f5c0deb5",
       "sourceName": "contracts/Raffle.sol",
@@ -48,7 +48,7 @@
         "Raffle"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol": {
       "lastModificationDate": 1655128368948,
       "contentHash": "56ec852a2aeddf81bf5a5720a7fc6a63",
       "sourceName": "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol",
@@ -90,7 +90,7 @@
         "VRFCoordinatorV2Interface"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol": {
       "lastModificationDate": 1655128368923,
       "contentHash": "eb9cc526ef59dfc4d644f56ddca0633a",
       "sourceName": "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol",
@@ -132,7 +132,7 @@
         "VRFConsumerBaseV2"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol": {
       "lastModificationDate": 1655128368948,
       "contentHash": "bdbf3e274e50272d9c830fa414fcbec9",
       "sourceName": "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol",
@@ -174,7 +174,7 @@
         "KeeperCompatibleInterface"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/hardhat/console.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/hardhat/console.sol": {
       "lastModificationDate": 1654887211571,
       "contentHash": "cc4777addd464ea56fa35b1c45df0591",
       "sourceName": "hardhat/console.sol",
@@ -216,7 +216,7 @@
         "console"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol": {
       "lastModificationDate": 1655128368948,
       "contentHash": "0e99ed258a59dc48bc432008b39453cd",
       "sourceName": "@chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol",
@@ -262,7 +262,7 @@
         "VRFCoordinatorV2Mock"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/node_modules/@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol": {
       "lastModificationDate": 1655128368948,
       "contentHash": "da5a0c3bd86c896f6a407f909c57edf3",
       "sourceName": "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
@@ -304,7 +304,7 @@
         "LinkTokenInterface"
       ]
     },
-    "/Users/daenamcclintock/Web3-Projects/hardhat-smartcontract-lottery/contracts/test/VRFCoordinatorV2Mock.sol": {
+    "/Users/daenamcclintock/Web3-Projects/hardhat-lottery/hardhat-smartcontract-lottery/contracts/test/VRFCoordinatorV2Mock.sol": {
       "lastModificationDate": 1655155627985,
       "contentHash": "22bc41bedd8bfa4a6e4bba0790bd51fd",
       "sourceName": "contracts/test/VRFCoordinatorV2Mock.sol",
